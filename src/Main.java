@@ -40,10 +40,8 @@ public class Main extends GraphicsProgram{
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         GObject obj = getElementAt(new GPoint(mouseEvent.getPoint()));
-        if(obj == null){
-
-        }else if(obj.getClass() == GameTable.class){
-            ((GameTable)obj).onclick(mouseEvent);
+        if(obj instanceof Clickable){
+            ((Clickable)obj).onclick(mouseEvent);
         }
     }
 }

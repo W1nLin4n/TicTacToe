@@ -3,7 +3,7 @@ import acm.graphics.GLabel;
 
 import java.awt.event.MouseEvent;
 
-public class GameTable extends GCompound{
+public class GameTable extends GCompound implements Clickable{
     private static final int EMPTY_TABLE = 0;
     private static final boolean X = false;
     private static final boolean O = true;

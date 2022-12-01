@@ -3,7 +3,7 @@ import acm.graphics.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
-public class Box extends GCompound{
+public class Box extends GCompound implements Clickable{
     private static final int paddingBox = 10;
     private static final int EMPTY = 0;
     private static final int X = 1;

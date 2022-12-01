@@ -3,8 +3,9 @@ import acm.graphics.GLabel;
 import acm.graphics.GRect;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
-public class ActionButton extends GCompound{
+public class ActionButton extends GCompound implements Clickable{
     private GRect box;
     private GLabel label;
 
@@ -17,6 +18,10 @@ public class ActionButton extends GCompound{
      * @param fontSize
      */
     public ActionButton(int x, int y, int width, int height, int fontSize){
+
+    }
+
+    public void onclick(MouseEvent mouseEvent){
 
     }
 
