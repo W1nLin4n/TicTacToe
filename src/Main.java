@@ -44,6 +44,7 @@ public class Main extends GraphicsProgram{
     private static boolean player;
     private static int difficulty;
     private static int hasPlayerWon;
+    private static boolean moved;
     private static boolean start;
     private static boolean restart;
 
@@ -99,8 +100,11 @@ public class Main extends GraphicsProgram{
             pause(1);
         }
         while(true){
-            waitForClick();
-            pause(1);
+            while(!moved){
+                waitForClick();
+                pause(1);
+            }
+            moved = false;
             if(table.isEnd()){
                 break;
             }
@@ -190,5 +194,13 @@ public class Main extends GraphicsProgram{
 
     public static void setHasPlayerWon(int hasPlayerWon) {
         Main.hasPlayerWon = hasPlayerWon;
+    }
+
+    public static boolean isMoved() {
+        return moved;
+    }
+
+    public static void setMoved(boolean moved) {
+        Main.moved = moved;
     }
 }

@@ -45,6 +45,7 @@ public class Box extends GCompound implements Clickable{
         if(contains(table.getLocalPoint(new GPoint(mouseEvent.getPoint())))){
             if(!table.isEnd() && getState() == EMPTY) {
                 makeMove();
+                Main.setMoved(true);
             }
         }
         update();
