@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5f0a36a4-2b95-473c-b8c3-adacec84d07b" name="Changes" comment="Base">
-      <change afterPath="$PROJECT_DIR$/src/Clickable.java" afterDir="false" />
+    <list default="true" id="5f0a36a4-2b95-473c-b8c3-adacec84d07b" name="Changes" comment="Finishing the game settings screen">
+      <change afterPath="$PROJECT_DIR$/src/AI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameLogic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RestartButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ActionButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ActionButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ActionButton.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Box.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ToggleDifficultyButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ToggleDifficultyButton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -73,6 +76,8 @@
       <workItem from="1669798320744" duration="9271000" />
       <workItem from="1669817087710" duration="10328000" />
       <workItem from="1669884887800" duration="10216000" />
+      <workItem from="1669978479378" duration="18315000" />
+      <workItem from="1670144217560" duration="10036000" />
     </task>
     <task id="LOCAL-00001" summary="Base">
       <created>1669917683543</created>
@@ -81,7 +86,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669917683543</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Finished making a class for a button to toggle a player and a difficulty. This is most likely a final version.">
+      <created>1670108640101</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670108640101</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Finishing the game settings screen">
+      <created>1670115574977</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1670115574977</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,7 +131,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Base" />
-    <option name="LAST_COMMIT_MESSAGE" value="Base" />
+    <MESSAGE value="Finished making a class for a button to toggle a player and difficulty" />
+    <MESSAGE value="Finished making a class for a button to toggle a player and a difficulty. This is most likely a final version." />
+    <MESSAGE value="Finishing the game settings screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finishing the game settings screen" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

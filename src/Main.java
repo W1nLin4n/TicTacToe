@@ -1,7 +1,9 @@
+import acm.graphics.GLabel;
 import acm.graphics.GObject;
 import acm.graphics.GPoint;
 import acm.program.GraphicsProgram;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class Main extends GraphicsProgram{
@@ -28,9 +30,20 @@ public class Main extends GraphicsProgram{
     private static final int startButtonWidth = 300;
     private static final int startButtonHeight = 100;
     private static final int startButtonFont = 32;
+    private static final int restartButtonX = 200;
+    private static final int restartButtonY = 450;
+    private static final int restartButtonWidth = 300;
+    private static final int restartButtonHeight = 100;
+    private static final int restartButtonFont = 32;
+    private static final int resultX = 100;
+    private static final int resultY = 50;
+    private static final int resultWidth = 500;
+    private static final int resultHeight = 350;
+    private static final int resultFont = 70;
     private static int page;
     private static boolean player;
     private static int difficulty;
+    private static int hasPlayerWon;
     private static boolean start;
     private static boolean restart;
 
@@ -42,9 +55,11 @@ public class Main extends GraphicsProgram{
 
     public void run(){
         this.setSize(screenWidth, screenHeight);
-        menu();
-        game();
-//        results();
+        while(true){
+            menu();
+            game();
+            results();
+        }
     }
 
     /**
@@ -79,10 +94,23 @@ public class Main extends GraphicsProgram{
         removeAll();
         GameTable table = new GameTable(tableX, tableY, tableWidth, tableHeight);
         add(table);
-        while(!table.isEnd()){
-            waitForClick();
+        if(player == GameTable.O){
+            AI.move(table);
             pause(1);
         }
+        while(true){
+            waitForClick();
+            pause(1);
+            if(table.isEnd()){
+                break;
+            }
+            AI.move(table);
+            pause(1);
+            if(table.isEnd()){
+                break;
+            }
+        }
+        pause(3000);
     }
 
     /**
@@ -91,6 +119,24 @@ public class Main extends GraphicsProgram{
     public void results(){
         page = RESULTS_PAGE;
         removeAll();
+        GLabel result;
+        if(hasPlayerWon == 1){
+            result = new GLabel("YOU WON!!!");
+        }else if(hasPlayerWon == -1) {
+            result = new GLabel("YOU LOST!!!");
+        }else{
+            result = new GLabel("DRAW!!!");
+        }
+        result.setFont(new Font("Calibri", Font.PLAIN, resultFont));
+        result.setLocation(resultX + (resultWidth - result.getWidth())/2, resultY + (resultHeight + result.getHeight())/2 - result.getDescent());
+        add(result);
+        RestartButton restartButton = new RestartButton(restartButtonX, restartButtonY, restartButtonWidth, restartButtonHeight, restartButtonFont);
+        add(restartButton);
+        while (!restart){
+            waitForClick();
+            pause(1);
+        }
+        restart = false;
     }
 
     /**
@@ -136,5 +182,13 @@ public class Main extends GraphicsProgram{
 
     public static void setRestart(boolean restart) {
         Main.restart = restart;
+    }
+
+    public static int getHasPlayerWon() {
+        return hasPlayerWon;
+    }
+
+    public static void setHasPlayerWon(int hasPlayerWon) {
+        Main.hasPlayerWon = hasPlayerWon;
     }
 }

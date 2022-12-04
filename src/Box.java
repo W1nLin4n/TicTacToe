@@ -5,9 +5,9 @@ import java.awt.event.MouseEvent;
 
 public class Box extends GCompound implements Clickable{
     private static final int paddingBox = 10;
-    private static final int EMPTY = 0;
-    private static final int X = 1;
-    private static final int O = 2;
+    public static final int EMPTY = 0;
+    public static final int X = 1;
+    public static final int O = 2;
     private GRect box;
     private GOval circle;
     private GCompound cross;
@@ -22,51 +22,72 @@ public class Box extends GCompound implements Clickable{
      * @param id box id
      */
     public Box(int x, int y, int width, int height, int id){
-        this.setLocation(x, y);
+        setLocation(x, y);
         this.id = id;
-        this.box = new GRect(0, 0, width, height);
-        this.circle = new GOval(paddingBox, paddingBox,
+        box = new GRect(0, 0, width, height);
+        circle = new GOval(paddingBox, paddingBox,
                                width - 2*paddingBox, height - 2*paddingBox);
-        this.cross = new GCompound();
+        cross = new GCompound();
         GLine line = new GLine(paddingBox, paddingBox,
                               width - paddingBox, height - paddingBox);
         cross.add(line);
         line = new GLine(paddingBox, height - paddingBox,
                         width - paddingBox, paddingBox);
         cross.add(line);
-        this.add(box);
-        System.out.println(box.getBounds());
+        add(box);
     }
 
+    /**
+     * Check if this box was clicked and if so, handle it
+     */
     public void onclick(MouseEvent mouseEvent){
-        System.out.println(this.getBounds());
-        if(contains(this.getLocalPoint(new GPoint(mouseEvent.getPoint())))){
-            System.out.println("INSIDE" + id + " " + this.getX() + " " + this.getY());
-            update();
+        GameTable table = (GameTable) this.getParent();
+        if(contains(table.getLocalPoint(new GPoint(mouseEvent.getPoint())))){
+            if(!table.isEnd() && getState() == EMPTY) {
+                makeMove();
+            }
         }
+        update();
+    }
+
+    /**
+     * AI makes a move
+     * @param id id of the box on which the AI clicked
+     */
+    public void aiMove(int id){
+        GameTable table = (GameTable) this.getParent();
+        if(this.id == id){
+            if(getState() == EMPTY) {
+                makeMove();
+            }
+        }
+        update();
+    }
+
+    /**
+     * Make move in current box
+     */
+    private void makeMove() {
+        int state = EMPTY;
+        GameTable table = (GameTable) this.getParent();
+        if(table.isTurn() == GameTable.X){
+            state = X;
+        }else if(table.isTurn() == GameTable.O){
+            state = O;
+        }
+        table.setState(GameLogic.setAt(table.getState(), id, state));
+        table.setTurn(!table.isTurn());
     }
 
     /**
      * Update the state of the box
      */
     public void update(){
-        int state = this.getState();
+        int state = getState();
         if(state == X && cross.getParent() == null){
-            this.add(cross);
+            add(cross);
         }else if(state == O && circle.getParent() == null){
-            this.add(circle);
-        }
-    }
-
-    /**
-     * Reset the box to default
-     */
-    public void reset(){
-        if(cross.getParent().equals(this)){
-            this.remove(cross);
-        }
-        if(circle.getParent().equals(this)) {
-            this.remove(circle);
+            add(circle);
         }
     }
 
@@ -75,7 +96,7 @@ public class Box extends GCompound implements Clickable{
      * @return current state of the box
      */
     public int getState(){
-        return 1;
+        return GameLogic.getAt(((GameTable) this.getParent()).getState(), id);
     }
 
     public int getId() {

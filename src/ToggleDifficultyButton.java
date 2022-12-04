@@ -7,9 +7,9 @@ public class ToggleDifficultyButton extends GCompound implements Clickable{
     private static final String NORMAL_TEXT = "Normal difficulty";
     private static final String HARD_TEXT = "Hard difficulty";
     private static final String IMPOSSIBLE_TEXT = "Impossible difficulty";
-    private static final int NORMAL_VALUE = 0;
-    private static final int HARD_VALUE = 1;
-    private static final int IMPOSSIBLE_VALUE = 2;
+    public static final int NORMAL_VALUE = 0;
+    public static final int HARD_VALUE = 1;
+    public static final int IMPOSSIBLE_VALUE = 2;
     private static final Color backgroundColor = Color.WHITE;
     private static final String fontFamily = "Calibri";
     private static final int fontStyle = Font.PLAIN;
