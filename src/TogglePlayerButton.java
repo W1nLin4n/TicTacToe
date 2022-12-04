@@ -14,6 +14,13 @@ public class TogglePlayerButton extends GCompound implements Clickable{
     private GCompound cross;
     private boolean player;
 
+    /**
+     * Default button to toggle player
+     * @param x top left corner x
+     * @param y top left corner y
+     * @param width button width
+     * @param height button height
+     */
     public TogglePlayerButton(int x, int y, int width, int height){
         setLocation(x, y);
         box = new GRect(0, 0, width, height);
@@ -31,6 +38,9 @@ public class TogglePlayerButton extends GCompound implements Clickable{
         player = X;
     }
 
+    /**
+     * Toggle to another player
+     */
     private void toggle(){
         if(player == X && cross.getParent() != null){
             remove(cross);
@@ -42,6 +52,10 @@ public class TogglePlayerButton extends GCompound implements Clickable{
         player = !player;
     }
 
+    /**
+     * The player should be toggled after a click
+     * @param mouseEvent
+     */
     @Override
     public void onclick(MouseEvent mouseEvent) {
         toggle();

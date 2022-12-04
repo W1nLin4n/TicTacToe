@@ -17,6 +17,14 @@ public class ToggleDifficultyButton extends GCompound implements Clickable{
     private GLabel label;
     private int difficulty;
 
+    /**
+     * Default button to toggle difficulty
+     * @param x top left corner x
+     * @param y top left corner y
+     * @param width button width
+     * @param height button height
+     * @param fontSize font size of a text
+     */
     public ToggleDifficultyButton(int x, int y, int width, int height, int fontSize){
         setLocation(x, y);
         box = new GRect(0, 0, width, height);
@@ -30,6 +38,9 @@ public class ToggleDifficultyButton extends GCompound implements Clickable{
         difficulty = NORMAL_VALUE;
     }
 
+    /**
+     * Toggle to another difficulty
+     */
     private void toggle(){
         switch (difficulty){
             case NORMAL_VALUE:
@@ -53,6 +64,10 @@ public class ToggleDifficultyButton extends GCompound implements Clickable{
         }
     }
 
+    /**
+     * The difficulty should be toggled after a click
+     * @param mouseEvent
+     */
     @Override
     public void onclick(MouseEvent mouseEvent) {
         toggle();
